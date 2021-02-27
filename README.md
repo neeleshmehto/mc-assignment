@@ -7,6 +7,8 @@ Pre-Requisites To Creating Infrastructure on AWS Using Terraform
 •	Terraform should be installed on the machine with version 0.12
 •	Install git in ec2 install to pull the repo for the terraform scripts 
 
+**•	Note: As per the instruction we need to create mount on /var/logs directory Instead of /var/logs I have created a directory /var/app_webserver amd mounted the FS on that path as this is the OS log directory to I didn’t created the mount on this directory.**
+
 
 Steps to implement Terraform files :
 

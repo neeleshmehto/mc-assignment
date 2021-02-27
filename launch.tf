@@ -2,8 +2,6 @@ resource "aws_launch_configuration" "launchcg" {
   name = "launch-config"
   image_id        = "${(var.webservers_ami)}"
   instance_type   = "${var.instance_type}"
-#  security_groups = "$[(aws_security_group.webservers.name)]"
-#  security_groups = "${data.aws_security_group.webservers.name}"
   security_groups = [aws_security_group.webservers.id]
   user_data                 = "${file("install_httpd.sh")}"
   ebs_block_device  {

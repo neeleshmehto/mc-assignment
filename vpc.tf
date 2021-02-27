@@ -17,7 +17,6 @@ resource "aws_internet_gateway" "terra_igw" {
 
 # Subnets : public
 resource "aws_subnet" "public" {
-#  count = "${length(var.subnets_cidr)}"
   vpc_id = "${aws_vpc.terra_vpc.id}"
   cidr_block = "${(var.public_subnet_cidr)}"
 #  availability_zone = "${(var.aws_region)}"
@@ -40,14 +39,12 @@ resource "aws_route_table" "public_rt" {
 }
 
 resource "aws_route_table_association" "public" {
-#  count = "${length(var.subnets_cidr)}"
   subnet_id      = "${(aws_subnet.public.id)}"
   route_table_id = "${aws_route_table.public_rt.id}"
 }
 
 # Subnets : Private 
 resource "aws_subnet" "private" {
-#  count = "${length(var.subnets_cidr)}"
   vpc_id = "${aws_vpc.terra_vpc.id}"
   cidr_block = "${(var.private_subnet_cidr)}"
 #  availability_zone = "${(var.aws_region)}"
@@ -57,24 +54,6 @@ resource "aws_subnet" "private" {
   }
 }
 
-# Route table: attach Internet Gateway 
-#resource "aws_route_table" "private_rt" {
-#  vpc_id = "${aws_vpc.terra_vpc.id}"
-#  route {
-#    cidr_block = "10.20.1.0/16"
-#    gateway_id = "${aws_internet_gateway.terra_igw.id}"
-#  }
-#  tags =  {
-#    Name = "PrivateRouteTable"
-#  }
-#}
-
-# Route table association with private subnets
-#resource "aws_route_table_association" "private" {
-#  count = "${length(var.subnets_cidr)}"
-#  subnet_id      = "${(aws_subnet.private.id)}"
-#  route_table_id = "${aws_route_table.private_rt.id}"
-#}
 
 
 resource "aws_security_group" "webservers" {

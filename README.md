@@ -37,6 +37,8 @@ Amazon Resources Created Using Terraform
 5.	Public and private AWS VPC Route Tables.
 6.	Associating AWS VPC Subnets with VPC route tables.
 
+------------------------------------------------------------------------------------------
+
 
 **Detail description of all the terraform files **
 

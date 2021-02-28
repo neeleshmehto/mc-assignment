@@ -13,10 +13,12 @@ Pre-Requisites To Creating Infrastructure on AWS Using Terraform
 Steps to implement Terraform files :
 
 1.	Pull the git repo by below command 
+mkdir terraform  && cd terraform
 git init
 git pull https://github.com/neeleshmehto/mc-assignment.git
 2.  initiate terraform 
 terraform init
+3.  Update AWS IAM API keys (access key and secret key) in file **provider.tf** (user should have required policy to create aws services). In this assigment i have given admin permission)   
 3.  Check the terraform plan there should not be any error msg in plan o/p
 terraform plan 
 4.  You will see all the changes in the plan output 
